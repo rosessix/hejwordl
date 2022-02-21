@@ -1,0 +1,93 @@
+:root {
+    --backgroundcolor-body: rgb(48, 52, 54);
+    --color-correct: #57ac78;
+    --color-elsewhere: #e9c601;
+    
+
+    --border-empty: 2px solid hsla(0,0%,50%,.8);
+}
+
+body {
+    background-color: var(--backgroundcolor-body);
+    color: rgb(212, 209, 203);
+}
+.title {
+    text-align: center;
+}
+
+.tilesgrid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    grid-template-columns: repeat(5, 4em);
+    grid-template-rows: repeat(6, 4em);
+    gap: .75em;
+    padding-bottom: 5em;
+}
+
+.tile {
+    color: white;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    border: var(--border-empty);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+}
+
+.pop {
+    animation: PopIn 100ms;
+}
+
+/* word styles */
+.correct {
+    background-color: var(--color-correct);
+}
+
+.misplaced {
+    background-color: var(--color-elsewhere);
+}
+
+@keyframes PopIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    
+}
+
+@keyframes dance {
+    20% {
+      transform: translateY(-50%);
+    }  
+  
+    40% {
+      transform: translateY(5%);
+    }  
+  
+    60% {
+      transform: translateY(-25%);
+    }  
+  
+    80% {
+      transform: translateY(2.5%);
+    }  
+  
+    90% {
+      transform: translateY(-5%);
+    }  
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
