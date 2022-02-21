@@ -896,6 +896,7 @@ function copyResult() {
 
     let tiles = tilegrid.querySelectorAll('[data-letter]')
     let index = 1
+    let attempts = 0
     let result = ''
     tiles.forEach(tile => {
         console.log(tile.dataset.state)
@@ -913,14 +914,28 @@ function copyResult() {
 
         if(index == 5) {
             index = 1
+            attempts += 1
             result += '\n'
         } else {
             index = index + 1
         }
 
     })
-    console.log(result)
+
+    let remainingTiles = tilegrid.querySelectorAll(':not([data-letter])')
+    
+    for (let i = index; i <= remainingTiles.length; i++) {
+        result += '⬛'
+        if(index == 5) {
+            index = 1
+            result += '\n'
+        } else {
+            index = index + 1
+        }
+    }
+    result = `Jeg brugte ${attempts}/6 forsøg. Hvor mange bruger du? \n${result}\n Spil mere @ https://rosessix.github.io/hejwordl/`
     copyTextToClipboard(result)
+    Toast('Kopieret til klipholder', 'green')
 }
 
 function copyTextToClipboard(text) {

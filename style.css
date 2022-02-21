@@ -15,6 +15,13 @@ body {
     text-align: center;
 }
 
+.author {
+    text-align: center;
+	font-size: 14px;
+	color: grey;
+
+}
+
 .tilesgrid {
     display: grid;
     justify-content: center;
@@ -45,6 +52,24 @@ body {
     animation: PopIn 100ms;
 }
 
+.button {
+    color: white;
+    font-size: 1.9em;
+    text-transform: uppercase;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    border: var(--border-empty);
+	/* border-radius: 5px; */
+	background-color: var(--backgroundcolor-body);
+}
+
+.copyemoji {
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 /* word styles */
 .correct {
     background-color: var(--color-correct);
@@ -53,6 +78,8 @@ body {
 .misplaced {
     background-color: var(--color-elsewhere);
 }
+
+
 
 @keyframes PopIn {
     from {
