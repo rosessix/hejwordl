@@ -776,8 +776,7 @@ const dictonary = [
     "næste",
     "peter",
     "jonas",
-    
-    
+    "vælte",
     // memes
 
 
@@ -924,7 +923,7 @@ function checkWin(tile, index, array, guess) {
 
     popTile(tile)
     
-    console.log(guess, word)
+    // console.log(guess, word)
     if (guess == word) {
         canInteract = false
         return Toast(`Du gættede det rigtige ord: ${word.toUpperCase()}`, 'green');
