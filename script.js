@@ -765,6 +765,18 @@ const dictonary = [
     "træne",
     "trive",
     "grene",
+    "skibe",
+    "gribe",
+    "knive",
+    "knibe",
+    "kræft",
+    "borde",
+    "stole",
+    "taber",
+    "næste",
+    "peter",
+    "jonas",
+    
     
     // memes
 
@@ -780,13 +792,19 @@ let randomWord = null
 let canInteract = true
 
 
-function generateGame() {
+function generateGame(obj) {
     randomWord = dictonary[Math.floor(Math.random() * dictonary.length)].toUpperCase().split('');
     const tilegrid = document.querySelector('[data-tile-grid]')
     console.log(tilegrid)
     
     // randomWord = 'æbler'.toUpperCase().split('');
     canInteract = true
+
+    resetGame()
+
+    if(obj != undefined) {
+        $(obj).blur();
+    }
 }
 
 function TodaysWordl(obj) {
@@ -794,7 +812,16 @@ function TodaysWordl(obj) {
     const msOffset = Date.now() - offsetFromDate
     const dayOffset = msOffset / 1000 / 60 / 60 / 24
     randomWord = dictonary[Math.floor(dayOffset)].toUpperCase().split('')
-    
+
+    $(obj).blur();
+    console.log('removed focus')
+
+    resetGame()
+}
+
+generateGame()
+
+function resetGame() {
     const tilegrid = document.querySelector('[data-tile-grid]')
     const tiles = tilegrid.querySelectorAll('[data-letter]');
     canInteract = true
@@ -808,14 +835,7 @@ function TodaysWordl(obj) {
         tile.classList.remove('correct')
         tile.classList.remove('misplaced')
     })
-
-    $(obj).blur();
-    console.log('removed focus')
-
-    
 }
-
-generateGame()
 
 function handleKeyPress(code) {
     let key = code.key.toUpperCase();
