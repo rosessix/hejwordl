@@ -762,6 +762,9 @@ const dictonary = [
     
     "bøger",
     "bæver",
+    "træne",
+    "trive",
+    "grene",
     
     // memes
 
@@ -786,6 +789,31 @@ function generateGame() {
     canInteract = true
 }
 
+function TodaysWordl(obj) {
+    const offsetFromDate = new Date(2022, 0, 1)
+    const msOffset = Date.now() - offsetFromDate
+    const dayOffset = msOffset / 1000 / 60 / 60 / 24
+    randomWord = dictonary[Math.floor(dayOffset)].toUpperCase().split('')
+    
+    const tilegrid = document.querySelector('[data-tile-grid]')
+    const tiles = tilegrid.querySelectorAll('[data-letter]');
+    canInteract = true
+
+    tiles.forEach((tile, index) => {
+        delete tile.dataset.letter
+        delete tile.dataset.state
+        tile.textContent = ''
+
+        tile.classList.remove('wrong')
+        tile.classList.remove('correct')
+        tile.classList.remove('misplaced')
+    })
+
+    $(obj).blur();
+    console.log('removed focus')
+
+    
+}
 
 generateGame()
 
@@ -807,6 +835,7 @@ function handleKeyPress(code) {
 }
 
 function insertKey(key) {
+    if (!canInteract) return
     const activeTiles = document.querySelectorAll('[data-state="active"]')
     if (activeTiles.length >= WordLength) return
     
@@ -994,7 +1023,7 @@ function copyTextToClipboard(text) {
     }
   
     document.body.removeChild(textArea);
-  }
+}
 
 function Toast(msg, classes, time) {
     M.toast({
