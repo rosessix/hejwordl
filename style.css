@@ -2,6 +2,7 @@
     --backgroundcolor-body: rgb(48, 52, 54);
     --color-correct: #57ac78;
     --color-elsewhere: #e9c601;
+    --color-wrong: rgb(95, 102, 105);
     
 
     --border-empty: 2px solid hsla(0,0%,50%,.8);
@@ -84,6 +85,11 @@ body {
 
 .misplaced {
     background-color: var(--color-elsewhere);
+}
+
+.wrong {
+    background-color: var(--color-wrong);
+
 }
 
 

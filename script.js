@@ -10163,10 +10163,13 @@ function submitGuess() {
     for (let i = 0; i < activeTiles.length; i++) {
         let tile = activeTiles[i]
         tile.dataset.state = 'wrong'
+        tile.classList.add('wrong')
 
         if(randomWord[i] == tile.dataset.letter) {
             tile.classList.add('correct')
             tile.dataset.state = 'correct'
+            tile.classList.remove('wrong')
+
             continue
         }
         
@@ -10176,6 +10179,7 @@ function submitGuess() {
         if (ngr.includes(tile.dataset.letter)) {
             tile.classList.add('misplaced')
             tile.dataset.state = 'misplaced'
+            tile.classList.remove('wrong')
         }
     }
     activeTiles.forEach((...params) => checkWin(...params, guess))
