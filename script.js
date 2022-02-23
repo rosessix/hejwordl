@@ -10172,7 +10172,7 @@ function submitGuess() {
         
         let ngr = randomWord.join("").toString()
 
-        console.log(ngr)
+        // console.log(ngr)
         if (ngr.includes(tile.dataset.letter)) {
             tile.classList.add('misplaced')
             tile.dataset.state = 'misplaced'
