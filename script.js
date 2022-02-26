@@ -10079,6 +10079,17 @@ function generateGame(obj) {
     // prompt()
 }
 
+function generateAlphabet() {
+    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "æ", "ø", "å"];
+    alphabet.forEach((letter) => {
+        $('.alphabet').append(`
+            <div class="tile" id="letter-${letter}">${letter}</div>
+        `)
+    })
+}
+generateAlphabet()
+
+
 function TodaysWordl(obj) {
     const offsetFromDate = new Date(2022, 0, 1)
     const msOffset = Date.now() - offsetFromDate
@@ -10092,6 +10103,27 @@ function TodaysWordl(obj) {
 }
 
 generateGame()
+
+function updateAlphabet(answer, guess) {
+    // $(`#letter-${}`)
+    answerarr = answer.split('')
+    console.log(answer)
+    guess.forEach((letter, i) => {
+        let ltr = letter.dataset.letter
+        console.log(answer[i] == ltr)
+        $(`#letter-${ltr.toLowerCase()}`).addClass('wrong')
+        if(answer.includes(ltr)) { // correct letter but wrong spot
+            $(`#letter-${ltr.toLowerCase()}`).removeClass('wrong')
+            $(`#letter-${ltr.toLowerCase()}`).addClass('misplaced')
+        }
+        if(answer[i] == ltr) {  // correct spot
+            console.log(`${ltr} was in the right spot`)
+            $(`#letter-${ltr.toLowerCase()}`).removeClass('misplaced')
+            $(`#letter-${ltr.toLowerCase()}`).removeClass('wrong')
+            $(`#letter-${ltr.toLowerCase()}`).addClass('correct')
+        }
+    })
+}
 
 function resetGame() {
     const tilegrid = document.querySelector('[data-tile-grid]')
@@ -10154,29 +10186,31 @@ function submitGuess() {
     const activeTiles = [...document.querySelectorAll('[data-state="active"]')]
     if (activeTiles.length != WordLength) return Toast('Ordet har ikke den rigtige længde', 'red ')
 
-
-
     const guess = activeTiles.reduce((word,tile) => {
         return word + tile.dataset.letter
     }, "")
+
     if (!dictonary.includes(guess.toLowerCase())) return Toast('Ordet er ikke i ordbogen', 'red ')
     for (let i = 0; i < activeTiles.length; i++) {
         let tile = activeTiles[i]
         tile.dataset.state = 'wrong'
         tile.classList.add('wrong')
+        
+        let realword = randomWord.join("").toString()
+        // console.log(realword)
+        updateAlphabet(realword, activeTiles)
 
         if(randomWord[i] == tile.dataset.letter) {
             tile.classList.add('correct')
             tile.dataset.state = 'correct'
             tile.classList.remove('wrong')
 
+
+
             continue
         }
         
-        let ngr = randomWord.join("").toString()
-
-        // console.log(ngr)
-        if (ngr.includes(tile.dataset.letter)) {
+        if (realword.includes(tile.dataset.letter)) {
             tile.classList.add('misplaced')
             tile.dataset.state = 'misplaced'
             tile.classList.remove('wrong')
@@ -10263,6 +10297,7 @@ function copyResult() {
     copyTextToClipboard(result)
     Toast('Kopieret til klipholder', 'green')
 }
+
 
 function copyTextToClipboard(text) {
     var textArea = document.createElement("textarea");

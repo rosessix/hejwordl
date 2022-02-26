@@ -56,6 +56,18 @@ body {
 
 }
 
+.alphabet {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: grid;
+    flex-grow: 1;
+    gap: .25em;
+    grid-template-columns: repeat(5, 4em);
+    grid-template-rows: repeat(6, 4em);
+    max-width: 25vw;
+}
+
 .pop {
     animation: PopIn 100ms;
 }
