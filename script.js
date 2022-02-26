@@ -10107,17 +10107,17 @@ generateGame()
 function updateAlphabet(answer, guess) {
     // $(`#letter-${}`)
     answerarr = answer.split('')
-    console.log(answer)
+    // console.log(answer)
     guess.forEach((letter, i) => {
         let ltr = letter.dataset.letter
-        console.log(answer[i] == ltr)
+        // console.log(answer[i] == ltr)
         $(`#letter-${ltr.toLowerCase()}`).addClass('wrong')
         if(answer.includes(ltr)) { // correct letter but wrong spot
             $(`#letter-${ltr.toLowerCase()}`).removeClass('wrong')
             $(`#letter-${ltr.toLowerCase()}`).addClass('misplaced')
         }
         if(answer[i] == ltr) {  // correct spot
-            console.log(`${ltr} was in the right spot`)
+            // console.log(`${ltr} was in the right spot`)
             $(`#letter-${ltr.toLowerCase()}`).removeClass('misplaced')
             $(`#letter-${ltr.toLowerCase()}`).removeClass('wrong')
             $(`#letter-${ltr.toLowerCase()}`).addClass('correct')
@@ -10244,7 +10244,7 @@ function checkWin(tile, index, array, guess) {
     let tilegrid = document.querySelector('[data-tile-grid]')
 
     let remainingTiles = tilegrid.querySelectorAll(':not([data-letter])')
-    console.log(remainingTiles.length)
+    // console.log(remainingTiles.length)
     if (remainingTiles.length == 0) {
         canInteract = false
         return Toast(`Du gættede ikke ordet. Det rigtige ord var: ${word.toUpperCase()}`, 'red');
@@ -10259,7 +10259,7 @@ function copyResult() {
     let attempts = 0
     let result = ''
     tiles.forEach(tile => {
-        console.log(tile.dataset.state)
+        // console.log(tile.dataset.state)
         if (tile.dataset.state == 'wrong') {
             result += '⬛'
         }
