@@ -10139,6 +10139,16 @@ function resetGame() {
         tile.classList.remove('correct')
         tile.classList.remove('misplaced')
     })
+
+
+    $( ".alphabet" ).children().each( (index, element) => {
+        let id = element.id
+        let _elem = $(`#${id}`)
+        _elem.removeClass('wrong')
+        _elem.removeClass('correct')
+        _elem.removeClass('misplaced')
+     });
+
 }
 
 function handleKeyPress(code) {
@@ -10295,7 +10305,7 @@ function copyResult() {
     }
     result = `Jeg brugte ${attempts}/6 forsøg. Hvor mange bruger du? \n${result}\n Spil mere @ https://rosessix.github.io/hejwordl/`
     copyTextToClipboard(result)
-    Toast('Kopieret til klipholder', 'green')
+    Toast('<p>Kopieret til klipholder</p> <br> <img style="width: 100px" src="./gif.gif">', 'green')
 }
 
 
