@@ -10056,6 +10056,7 @@ const dictonary = [
     "crane"
 ]
 
+let myanswers = []
 
 let WordLength = 5
 
@@ -10215,19 +10216,26 @@ function submitGuess() {
     const activeTiles = [...document.querySelectorAll('[data-state="active"]')]
     if (activeTiles.length != WordLength) return Toast('Ordet har ikke den rigtige længde', 'red ')
 
+    let realword = randomWord.join("").toString()
+    
     const guess = activeTiles.reduce((word,tile) => {
         return word + tile.dataset.letter
     }, "")
 
     if (!dictonary.includes(guess.toLowerCase())) return Toast('Ordet er ikke i ordbogen', 'red ')
+    
+    updateAlphabet(realword, activeTiles)
+
+    if (myanswers[guess]) return Toast('Du har allerede gættet det her ord', 'red')
+    
+    myanswers[guess] = true
+
     for (let i = 0; i < activeTiles.length; i++) {
         let tile = activeTiles[i]
         tile.dataset.state = 'wrong'
         tile.classList.add('wrong')
         
-        let realword = randomWord.join("").toString()
         // console.log(realword)
-        updateAlphabet(realword, activeTiles)
 
         if(randomWord[i] == tile.dataset.letter) {
             tile.classList.add('correct')
@@ -10261,7 +10269,6 @@ function popTile(tile) {
 function checkWin(tile, index, array, guess) {
     if (!canInteract) return
     let word = randomWord.join("").toString()
-
     popTile(tile)
     
     // console.log(guess, word)
