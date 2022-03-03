@@ -10077,6 +10077,7 @@ function generateGame(obj) {
         $(obj).blur();
     }
     // prompt()
+
 }
 
 function generateAlphabet() {
@@ -10095,11 +10096,27 @@ function TodaysWordl(obj) {
     const msOffset = Date.now() - offsetFromDate
     const dayOffset = msOffset / 1000 / 60 / 60 / 24
     randomWord = dictonary[Math.floor(dayOffset)].toUpperCase().split('')
+    
 
     $(obj).blur();
     console.log('removed focus')
 
     resetGame()
+
+    setTimeout(() => {
+        let lastplay = localStorage.getItem('lastplayed')
+        if (lastplay) {
+            let lastdate = new Date(lastplay)
+            let todaysdate = new Date()
+            console.log(lastdate.getDay(), todaysdate.getDay())
+            if(lastdate.getDay() == todaysdate.getDay()) {
+                let html = localStorage.getItem('lasthtml')
+                console.log(html)
+                $('.tilesgrid').html(html);
+                canInteract = false
+            }
+        }
+    }, 25)
 }
 
 generateGame()
@@ -10128,6 +10145,8 @@ function updateAlphabet(answer, guess) {
 function resetGame() {
     const tilegrid = document.querySelector('[data-tile-grid]')
     const tiles = tilegrid.querySelectorAll('[data-letter]');
+    const tilehtml = tiles.html
+    
     canInteract = true
 
     tiles.forEach((tile, index) => {
@@ -10248,6 +10267,14 @@ function checkWin(tile, index, array, guess) {
     // console.log(guess, word)
     if (guess == word) {
         canInteract = false
+        const tilegrid = document.querySelector('[data-tile-grid]')
+        const tiles = tilegrid.querySelectorAll('[data-letter]');
+
+        localStorage.setItem('lastplayed', new Date())
+        localStorage.setItem('lasthtml', $('.tilesgrid').html())
+
+    
+
         return Toast(`Du gættede det rigtige ord: ${word.toUpperCase()}`, 'green');
     }
 
