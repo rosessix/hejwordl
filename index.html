@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -22,8 +23,51 @@
         <button class="button" onClick="TodaysWordl(this)">idags ordl</button>
         <button class="button" onClick="generateGame(this)">tilfældig ordl</button>
     </div>
+
+    <a class="modal-trigger" href="#patchnotes"><i class="material-icons patchnotes medium">new_releases</i></a>
     <h1 class="title">hej ordl</h1>
     <h3 class="author">discord - legacy#0415</h1>
+
+    <div id="patchnotes" class="modal modal-fixed-footer" style="color: black !important;">
+        <div class="modal-content">
+            <h4>Patch Notes</h4>
+            
+            <h5>Patch note Mar 3. 2022</h5>
+            <li><span style="color: cyan;">Fixed</span> så man ikke kan skrive det samme ord flere gange.</li>
+            <li><span style="color: cyan;">Fixed</span> så man kun kan spille idags-ordl en gang.</li>
+            
+
+            <h5>Patch note Mar 1. 2022</h5>
+            <li><span style="color: cyan;">Fixed</span> fejl på alfabetet.</li>
+            <li><span style="color: green;">Tilføjet</span> en sjov gif til kopier emoji-resultat.</li>
+
+
+            <h5>Patch note Feb 26. 2022</h5>
+            <li><span style="color: green;">Tilføjet</span> alfabet, til at holde styr på brugte bogstaver.</li>
+            <li><span style="color: red;">Fjernet</span> snyd fra konsollen (igen).</li>
+            
+
+
+
+            <h5>Patch note Feb 23. 2022</h5>
+            <li><span style="color: green;">Tilføjet</span> idags ordl - samme ord for alle.</li>
+            <li><span style="color: green;">Tilføjet</span> flere ord</li>
+            <li><span style="color: green;">Tilføjet</span> genstart spil funktion (man behøver ikke reload mere)</li>
+            <li><span style="color: red">Fjernet</span> svaret i konsollen.</li>
+            <li><span style="color: yellowgreen">Rettet</span> forkete bogstavers farve.</li>
+
+            <h5>Patch note Feb 22. 2022</h5>
+            <li><span style="color: green;">Tilføjet</span> min discord til spillet</li>
+            <li><span style="color: green;">Tilføjet</span> kopier emoji-resultat funktionen</li>
+
+            <h5>Patch note Feb 21. 2022</h5>
+            <li><span style="color: green;">Tilføjet</span> hele spillet</li>
+            <li>Hej Ordl er en parodi på det kendte spil wordl. Det er det samme præncis, bare på dansk.</li>
+        </div>
+        <div class="modal-footer fixed-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Luk</a>
+        </div>
+    </div>
 
     <div data-tile-grid class="tilesgrid">
         <div class="tile"></div>

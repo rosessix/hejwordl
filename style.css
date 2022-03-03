@@ -19,6 +19,12 @@ body {
     top: 5%;    
 }
 
+.patchnotes {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+
 .title {
     text-align: center;
 }
@@ -71,6 +77,8 @@ body {
 .pop {
     animation: PopIn 100ms;
 }
+
+
 
 .button {
     color: white;

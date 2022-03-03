@@ -1,5 +1,6 @@
 $(document).ready(function(){
     document.addEventListener('keydown', handleKeyPress)    
+    $('.modal').modal();
 })
 
 const dictonary = [
@@ -10408,3 +10409,4 @@ function Toast(msg, classes, time) {
         displayLength: time | 5000
     })
 }
+
