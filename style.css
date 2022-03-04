@@ -109,9 +109,19 @@ body {
 
 .wrong {
     background-color: var(--color-wrong);
-
 }
 
+.correct-text {
+    color: var(--color-correct);
+}
+
+.misplaced-text {
+    color: var(--color-elsewhere);
+}
+
+.wrong-text {
+    color: var(--color-wrong);
+}
 
 
 @keyframes PopIn {
