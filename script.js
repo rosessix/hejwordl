@@ -10150,6 +10150,8 @@ function resetGame() {
     const tilegrid = document.querySelector('[data-tile-grid]')
     const tiles = tilegrid.querySelectorAll('[data-letter]');
     const tilehtml = tiles.html
+
+    myanswers = [];
     
     canInteract = true
 
